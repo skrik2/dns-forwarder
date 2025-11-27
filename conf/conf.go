@@ -102,7 +102,6 @@ type AuthPanelConfig struct {
 }
 
 type TLSConfig struct {
-	ServerName string `json:"servername"`
 	PublicKey  string `json:"public_key"`
 	PrivateKey string `json:"private_key"`
 }
