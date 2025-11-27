@@ -42,7 +42,7 @@ func Udp(port int) error {
 	}
 	defer udpConn.Close()
 
-	log.Printf("[info] successfully started standard UDP server: %s", addr)
+	log.Printf("[info] Standard Server (TCP) started on: %s", addr)
 
 	buf := make([]byte, dns.MinMsgSize)
 	for {
@@ -97,7 +97,7 @@ func Tcp(port int) error {
 	}
 	defer listener.Close()
 
-	log.Printf("[info] successfully started standard TCP server: %s", addr)
+	log.Printf("[info] Standard Server (TCP) started on: %s", addr)
 	for {
 		conn, err := listener.AcceptTCP()
 		if err != nil {
