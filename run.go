@@ -29,9 +29,29 @@ func Run() error {
 
 func Server() error {
 	cfg := conf.Info()
-	//TDDO: Panel
 
-	// Standard
-	_ = server.Standard(cfg.Server.Standard)
-	return nil
+	go func() {
+		if err := server.Standard(cfg.Server.Standard); err != nil {
+			log.Printf("[error] standard: %v", err)
+		}
+	}()
+
+	go func() {
+		if err := server.Dot(); err != nil {
+			log.Printf("[error] dot: %v", err)
+		}
+	}()
+
+	go func() {
+		if err := server.Doq(); err != nil {
+			log.Printf("[error] doq: %v", err)
+		}
+	}()
+
+	go func() {
+		if err := server.Doh(); err != nil {
+			log.Printf("[error] doh: %v", err)
+		}
+	}()
+	select {}
 }
